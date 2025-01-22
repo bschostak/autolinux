@@ -1,0 +1,17 @@
+network-manager-applet
+volumeicon
+pulseaudio 
+pavucontrol
+htop
+dmenu
+polkit
+elogind
+libelogind
+xfce-polkit
+base-devel
+xterm
+xinput
+void-repo-nonfree
+void-repo-multilib
+void-repo-multilib-nonfree
+xtools
