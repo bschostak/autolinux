@@ -1,0 +1,1 @@
+linux-headers nvidia-dkms nvidia-utils opencl-nvidia libglvnd lib32-libglnvd lib32-nvidia-utils lib32-opencl-nvidia nvidia-settings
