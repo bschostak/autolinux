@@ -1,5 +1,26 @@
 #!/bin/bash
 
+#* Installation of Flatpak and Paru (AUR)
+
+function install_flatpak_and_paru {
+    echo "Installing Flatpak and Paru (AUR)..."
+
+    sudo $pkg_update
+    sudo $pkg_install flatpak xdg-desktop-portal-gtk xdg-desktop-portal
+
+    echo "Flatpak is installed. It's recommended to reboot your system."
+    echo "Installing Paru (AUR)..."
+
+    sudo $pkg_install git base-devel
+    git clone https://aur.archlinux.org/paru.git
+    cd paru || exit
+    makepkg -si
+    cd ..
+    rm -rf paru
+
+    echo "Paru (AUR) is installed."
+}
+
 #* Nvidia driver installation
 
 function choose_driver_type {
@@ -129,15 +150,17 @@ while true; do
     echo "1) Install package list"
     echo "2) Install dotfiles"
     echo "3) Install Nvidia graphic drivers"
-    echo "4) Quit"
+    echo "4) Install Flatpak and Paru (AUR)"
+    echo "5) Quit"
 
-    read -p "Choose an option [1-4]: " choice
+    read -p "Choose an option [1-5]: " choice
 
     case $choice in
         1) install_pkg_list ;;
         2) option_two ;;
         3) install_nvidia_graphic_drivers ;;
-        4) quit ;;
+        4) install_flatpak_and_paru ;;
+        5) quit ;;
         *) echo "Invalid option" ;;
     esac
 done
